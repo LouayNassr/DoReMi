@@ -1,4 +1,4 @@
-package com.example.doremi;
+package com.example.doremi.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentTransaction;
 import android.os.Bundle;
 
 import com.example.doremi.Fragments.LoginFragment;
+import com.example.doremi.R;
 
 public class MainActivity extends AppCompatActivity {
 

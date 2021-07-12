@@ -1,4 +1,4 @@
-package com.example.doremi.Activities.ui.slideshow;
+package com.example.doremi.ViewModels;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

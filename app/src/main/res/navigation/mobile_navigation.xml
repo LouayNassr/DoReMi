@@ -7,19 +7,47 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.example.doremi.Activities.ui.home.HomeFragment"
+        android:name="com.example.doremi.Fragments.HomeFragment"
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/nav_gallery"
-        android:name="com.example.doremi.Activities.ui.gallery.GalleryFragment"
+        android:name="com.example.doremi.Fragments.GalleryFragment.GalleryFragment"
         android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        tools:layout="@layout/fragment_gallery" >
+        <action
+            android:id="@+id/action_nav_gallery_to_playerFragment"
+            app:destination="@id/playerFragment"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_slideshow"
-        android:name="com.example.doremi.Activities.ui.slideshow.SlideshowFragment"
+        android:name="com.example.doremi.Fragments.SlideshowFragment"
         android:label="@string/menu_slideshow"
         tools:layout="@layout/fragment_slideshow" />
+    <fragment
+        android:id="@+id/playerFragment"
+        android:name="com.example.doremi.Fragments.PlayerFragment"
+        android:label="fragment_player"
+        tools:layout="@layout/fragment_player" >
+        <argument
+            android:name="imageUrl"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="artistName"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="songName"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="songUrl"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
 </navigation>

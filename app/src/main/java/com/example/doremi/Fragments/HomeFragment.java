@@ -1,4 +1,4 @@
-package com.example.doremi.Activities.ui.home;
+package com.example.doremi.Fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.doremi.ViewModels.HomeViewModel;
 import com.example.doremi.databinding.FragmentHomeBinding;
 
 public class HomeFragment extends Fragment {
