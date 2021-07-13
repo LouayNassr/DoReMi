@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.doremi.Activities.DrawerActivity;
 import com.example.doremi.Models.Song;
 import com.example.doremi.R;
+import com.example.doremi.ViewModels.GalleryViewModel;
 import com.squareup.picasso.Picasso;
 
 import org.jetbrains.annotations.NotNull;
@@ -62,6 +63,7 @@ public class SongsAdapter extends RecyclerView.Adapter<SongsAdapter.ViewHolder> 
                 bundle.putString("songTitle", songTitle);
                 bundle.putString("artistName", artistName);
                 bundle.putString("songUrl", songUrl);
+                bundle.putInt("position", position);
                 Navigation.findNavController(holder.itemView).navigate(R.id.action_nav_gallery_to_playerFragment,bundle);
             }
         });

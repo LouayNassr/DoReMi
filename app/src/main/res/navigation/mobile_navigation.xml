@@ -49,5 +49,8 @@
             android:name="songUrl"
             app:argType="string"
             app:nullable="true" />
+        <argument
+            android:name="position"
+            app:argType="integer" />
     </fragment>
 </navigation>
