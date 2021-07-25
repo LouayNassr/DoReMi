@@ -40,6 +40,7 @@ import static com.google.android.exoplayer2.C.CONTENT_TYPE_MUSIC;
 public class PlayerFragment extends Fragment {
     ImageButton btnFullScreen, btnSettings;
     boolean flag = false;// for fullscreen
+    SimpleExoPlayer player;
     private FragmentPlayerBinding binding;
     private SongsPlayerSharedViewModel viewModel;
     private PlayerNotificationManager playerNotificationManager;
@@ -76,7 +77,7 @@ public class PlayerFragment extends Fragment {
         DefaultTrackSelector trackSelector = new DefaultTrackSelector(getContext());
         trackSelector.setParameters(trackSelector.getParameters());
 
-        SimpleExoPlayer player = new SimpleExoPlayer.Builder(activity).setTrackSelector(trackSelector).build();
+        player = new SimpleExoPlayer.Builder(activity).setTrackSelector(trackSelector).build();
 
         // audioAttributes is used to add audio focus configuration
         AudioAttributes audioAttributes = new AudioAttributes.Builder()
@@ -183,8 +184,12 @@ public class PlayerFragment extends Fragment {
 
     @Override
     public void onDestroyView() {
-        super.onDestroyView();
+        playerNotificationManager.setPlayer(null);
+        player.release();
+        player = null;
         binding = null;
+        super.onDestroyView();
         // TODO: 7/13/2021 need to set playerNotificationManager to null if it is not null also release the player and set it to null
     }
+
 }
