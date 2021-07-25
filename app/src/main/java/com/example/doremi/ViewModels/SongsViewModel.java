@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
+import com.example.doremi.Constants;
 import com.example.doremi.Models.Song;
 import com.example.doremi.Repos.SongsRepository;
 
@@ -15,7 +16,7 @@ import java.util.List;
 
 public class SongsViewModel extends AndroidViewModel {
 
-    public String playlistUrl;
+    public String playlistUrl = Constants.songsListApi;
     private LiveData<List<Song>> mSongs;
     private SongsRepository repository = new SongsRepository(getApplication());
 
@@ -35,7 +36,7 @@ public class SongsViewModel extends AndroidViewModel {
         return mSongs;
     }
 
-    public void setSongs(String url) {
-        mSongs = repository.getSongs(url);
+    public void setSongs() {
+        mSongs = repository.getSongs(getPlaylistUrl());
     }
 }

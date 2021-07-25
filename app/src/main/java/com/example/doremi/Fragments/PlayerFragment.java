@@ -38,19 +38,16 @@ import static com.google.android.exoplayer2.C.CONTENT_TYPE_MUSIC;
 
 
 public class PlayerFragment extends Fragment {
+    ImageButton btnFullScreen, btnSettings;
+    boolean flag = false;// for fullscreen
     private FragmentPlayerBinding binding;
-
     private SongsViewModel viewModel;
     private PlayerNotificationManager playerNotificationManager;
 
-    ImageButton btnFullScreen, btnSettings;
-
-    boolean flag = false;// for fullscreen
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-//        binding = FragmentPlayerBinding.inflate(inflater, container, false);
         binding = FragmentPlayerBinding.inflate(inflater, container, false);
         View rootView = binding.getRoot();
 
@@ -70,9 +67,8 @@ public class PlayerFragment extends Fragment {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
 
-
-        viewModel = new ViewModelProvider(requireParentFragment()).get(SongsViewModel.class);
-
+        viewModel = new ViewModelProvider(requireActivity()).get(SongsViewModel.class);
+        viewModel.setSongs();
         final int[] position = {getArguments().getInt("position")};
 
         Activity activity = getActivity();// this line is used to create only one instance of exoplayer

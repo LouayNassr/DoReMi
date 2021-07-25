@@ -13,7 +13,6 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.doremi.Adapters.SongsAdapter;
-import com.example.doremi.Constants;
 import com.example.doremi.Models.Song;
 import com.example.doremi.ViewModels.SongsViewModel;
 import com.example.doremi.databinding.FragmentSongsBinding;
@@ -38,14 +37,13 @@ public class SongsFragment extends Fragment {
 
         binding = FragmentSongsBinding.inflate(inflater, container, false);
         binding.songsListRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        viewModel = new ViewModelProvider(this).get(SongsViewModel.class);
+        viewModel = new ViewModelProvider(requireActivity()).get(SongsViewModel.class);
 
         String url = getPlaylistUrl();
         if (url != null && url != "") {
-            viewModel.setSongs(url);
-        } else {
-            viewModel.setSongs(Constants.songsListApi);
+            viewModel.setPlaylistUrl(url);
         }
+        viewModel.setSongs();
         return binding.getRoot();
     }
 
