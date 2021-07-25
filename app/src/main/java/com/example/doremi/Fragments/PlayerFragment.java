@@ -90,8 +90,6 @@ public class PlayerFragment extends Fragment {
         binding.audioPlayerView.setPlayer(player);
         player.setAudioAttributes(audioAttributes, true);
 
-
-
         viewModel.getSongs().observe(getViewLifecycleOwner(), new Observer<List<Song>>() {
             @Override
             public void onChanged(List<Song> songs) {

@@ -16,7 +16,6 @@ import com.example.doremi.Adapters.SongsAdapter;
 import com.example.doremi.Constants;
 import com.example.doremi.Models.Song;
 import com.example.doremi.ViewModels.SongsViewModel;
-import com.example.doremi.ViewModels.SongsModelFactory;
 import com.example.doremi.databinding.FragmentGalleryBinding;
 
 import java.util.List;
@@ -39,13 +38,12 @@ public class GalleryFragment extends Fragment {
 
         binding = FragmentGalleryBinding.inflate(inflater, container, false);
         binding.songsListRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        viewModel = new ViewModelProvider(this).get(SongsViewModel.class);
 
         String url = getPlaylistUrl();
         if (url != null && url != "") {
-            viewModel = new ViewModelProvider(this, new SongsModelFactory(getActivity().getApplication(), url)).get(SongsViewModel.class);
             viewModel.setSongs(url);
         } else {
-            viewModel = new ViewModelProvider(this, new SongsModelFactory(getActivity().getApplication(), Constants.songsListApi)).get(SongsViewModel.class);
             viewModel.setSongs(Constants.songsListApi);
         }
         return binding.getRoot();

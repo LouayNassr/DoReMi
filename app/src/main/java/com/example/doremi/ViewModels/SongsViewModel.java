@@ -19,11 +19,6 @@ public class SongsViewModel extends AndroidViewModel {
     private LiveData<List<Song>> mSongs;
     private SongsRepository repository = new SongsRepository(getApplication());
 
-    public SongsViewModel(@NonNull @NotNull Application application, String playlistUrl) {
-        super(application);
-        this.playlistUrl = playlistUrl;
-    }
-
     public SongsViewModel(@NonNull @NotNull Application application) {
         super(application);
     }
