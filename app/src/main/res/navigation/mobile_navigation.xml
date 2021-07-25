@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/nav_playlists"
         android:name="com.example.doremi.Fragments.PlaylistFragment"
-        android:label="@string/menu_home"
+        android:label="@string/menu_playlists"
         tools:layout="@layout/fragment_playlists" >
         <action
             android:id="@+id/action_nav_playlists_to_nav_songs"
@@ -17,9 +17,9 @@
 
     <fragment
         android:id="@+id/nav_songs"
-        android:name="com.example.doremi.Fragments.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" >
+        android:name="com.example.doremi.Fragments.SongsFragment"
+        android:label="@string/menu_songs"
+        tools:layout="@layout/fragment_songs" >
         <action
             android:id="@+id/action_nav_songs_to_playerFragment"
             app:destination="@id/playerFragment"

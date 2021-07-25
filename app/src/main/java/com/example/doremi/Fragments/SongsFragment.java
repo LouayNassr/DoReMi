@@ -16,16 +16,16 @@ import com.example.doremi.Adapters.SongsAdapter;
 import com.example.doremi.Constants;
 import com.example.doremi.Models.Song;
 import com.example.doremi.ViewModels.SongsViewModel;
-import com.example.doremi.databinding.FragmentGalleryBinding;
+import com.example.doremi.databinding.FragmentSongsBinding;
 
 import java.util.List;
 
-public class GalleryFragment extends Fragment {
+public class SongsFragment extends Fragment {
 
-    private static final String LOG = GalleryFragment.class.getSimpleName();
+    private static final String LOG = SongsFragment.class.getSimpleName();
     SongsAdapter adapter;
     SongsViewModel viewModel;
-    private FragmentGalleryBinding binding;
+    private FragmentSongsBinding binding;
 
     @Override
     public void onCreate(@Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
@@ -36,7 +36,7 @@ public class GalleryFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        binding = FragmentGalleryBinding.inflate(inflater, container, false);
+        binding = FragmentSongsBinding.inflate(inflater, container, false);
         binding.songsListRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         viewModel = new ViewModelProvider(this).get(SongsViewModel.class);
 
@@ -61,7 +61,6 @@ public class GalleryFragment extends Fragment {
             }
         });
     }
-
 
     @Override
     public void onDestroyView() {
