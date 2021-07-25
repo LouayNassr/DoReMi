@@ -17,7 +17,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.doremi.Models.Song;
 import com.example.doremi.R;
-import com.example.doremi.ViewModels.SongsViewModel;
+import com.example.doremi.ViewModels.SongsPlayerSharedViewModel;
 import com.example.doremi.databinding.FragmentPlayerBinding;
 import com.google.android.exoplayer2.C;
 import com.google.android.exoplayer2.MediaItem;
@@ -41,7 +41,7 @@ public class PlayerFragment extends Fragment {
     ImageButton btnFullScreen, btnSettings;
     boolean flag = false;// for fullscreen
     private FragmentPlayerBinding binding;
-    private SongsViewModel viewModel;
+    private SongsPlayerSharedViewModel viewModel;
     private PlayerNotificationManager playerNotificationManager;
 
     @Override
@@ -67,7 +67,7 @@ public class PlayerFragment extends Fragment {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
 
-        viewModel = new ViewModelProvider(requireActivity()).get(SongsViewModel.class);
+        viewModel = new ViewModelProvider(requireActivity()).get(SongsPlayerSharedViewModel.class);
         viewModel.setSongs();
         final int[] position = {getArguments().getInt("position")};
 

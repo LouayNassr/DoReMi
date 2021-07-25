@@ -14,13 +14,13 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-public class SongsViewModel extends AndroidViewModel {
+public class SongsPlayerSharedViewModel extends AndroidViewModel {
 
     public String playlistUrl = Constants.songsListApi;
     private LiveData<List<Song>> mSongs;
     private SongsRepository repository = new SongsRepository(getApplication());
 
-    public SongsViewModel(@NonNull @NotNull Application application) {
+    public SongsPlayerSharedViewModel(@NonNull @NotNull Application application) {
         super(application);
     }
 

@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.doremi.Adapters.SongsAdapter;
 import com.example.doremi.Models.Song;
-import com.example.doremi.ViewModels.SongsViewModel;
+import com.example.doremi.ViewModels.SongsPlayerSharedViewModel;
 import com.example.doremi.databinding.FragmentSongsBinding;
 
 import java.util.List;
@@ -23,7 +23,7 @@ public class SongsFragment extends Fragment {
 
     private static final String LOG = SongsFragment.class.getSimpleName();
     SongsAdapter adapter;
-    SongsViewModel viewModel;
+    SongsPlayerSharedViewModel viewModel;
     private FragmentSongsBinding binding;
 
     @Override
@@ -37,7 +37,7 @@ public class SongsFragment extends Fragment {
 
         binding = FragmentSongsBinding.inflate(inflater, container, false);
         binding.songsListRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        viewModel = new ViewModelProvider(requireActivity()).get(SongsViewModel.class);
+        viewModel = new ViewModelProvider(requireActivity()).get(SongsPlayerSharedViewModel.class);
 
         String url = getPlaylistUrl();
         if (url != null && url != "") {
