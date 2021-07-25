@@ -4,8 +4,6 @@ import android.app.Activity;
 import android.app.PendingIntent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.media.Image;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,10 +15,9 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.doremi.Activities.MainActivity;
 import com.example.doremi.Models.Song;
 import com.example.doremi.R;
-import com.example.doremi.ViewModels.GalleryViewModel;
+import com.example.doremi.ViewModels.SongsViewModel;
 import com.example.doremi.databinding.FragmentPlayerBinding;
 import com.google.android.exoplayer2.C;
 import com.google.android.exoplayer2.MediaItem;
@@ -33,10 +30,7 @@ import com.google.android.exoplayer2.trackselection.MappingTrackSelector;
 import com.google.android.exoplayer2.trackselection.TrackSelectionArray;
 import com.google.android.exoplayer2.ui.PlayerNotificationManager;
 import com.google.android.exoplayer2.ui.TrackSelectionDialogBuilder;
-import com.squareup.picasso.Picasso;
-import com.squareup.picasso.PicassoProvider;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,7 +40,7 @@ import static com.google.android.exoplayer2.C.CONTENT_TYPE_MUSIC;
 public class PlayerFragment extends Fragment {
     private FragmentPlayerBinding binding;
 
-    private GalleryViewModel viewModel;
+    private SongsViewModel viewModel;
     private PlayerNotificationManager playerNotificationManager;
 
     ImageButton btnFullScreen, btnSettings;
@@ -77,7 +71,7 @@ public class PlayerFragment extends Fragment {
 
 
 
-        viewModel = new ViewModelProvider(requireParentFragment()).get(GalleryViewModel.class);
+        viewModel = new ViewModelProvider(requireParentFragment()).get(SongsViewModel.class);
 
         final int[] position = {getArguments().getInt("position")};
 

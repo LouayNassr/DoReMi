@@ -6,14 +6,11 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
-import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
-import com.example.doremi.Constants;
-import com.example.doremi.Fragments.GalleryFragment.SongsAdapter;
 import com.example.doremi.Models.Song;
 import com.example.doremi.Utils.VolleySingleton;
 
@@ -21,26 +18,25 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
 public class SongsRepository {
 
     private static final String LOG = SongsRepository.class.getSimpleName();
-    private MutableLiveData<List<Song>> mSongs = new MutableLiveData<>();
+    private final MutableLiveData<List<Song>> mSongs = new MutableLiveData<>();
     Context ctx;
 
     public SongsRepository(@NonNull Context context) {
         ctx = context;
     }
-    public LiveData<List<Song>> getSongs() {
-        querySongs();
+    public LiveData<List<Song>> getSongs(String url) {
+        fetchSongs(url);
         return mSongs;
     }
 
-    private void querySongs() {
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, Constants.songsListApi, null, new Response.Listener<JSONArray>() {
+    private void fetchSongs(String url) {
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
                 List<Song> songs = new ArrayList<>();
@@ -57,7 +53,6 @@ public class SongsRepository {
                         e.printStackTrace();
                     }
                 }
-//                mSongs.postValue(songs);
                 mSongs.setValue(songs);
             }
         }, new Response.ErrorListener() {

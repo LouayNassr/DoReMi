@@ -1,7 +1,4 @@
-package com.example.doremi.Fragments.GalleryFragment;
-
-
-
+package com.example.doremi.Adapters;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -12,14 +9,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.doremi.Activities.DrawerActivity;
 import com.example.doremi.Models.Song;
 import com.example.doremi.R;
-import com.example.doremi.ViewModels.GalleryViewModel;
 import com.squareup.picasso.Picasso;
 
 import org.jetbrains.annotations.NotNull;
@@ -64,7 +58,7 @@ public class SongsAdapter extends RecyclerView.Adapter<SongsAdapter.ViewHolder> 
                 bundle.putString("artistName", artistName);
                 bundle.putString("songUrl", songUrl);
                 bundle.putInt("position", position);
-                Navigation.findNavController(holder.itemView).navigate(R.id.action_nav_gallery_to_playerFragment,bundle);
+                Navigation.findNavController(holder.itemView).navigate(R.id.action_nav_songs_to_playerFragment,bundle);
             }
         });
     }
@@ -82,9 +76,9 @@ public class SongsAdapter extends RecyclerView.Adapter<SongsAdapter.ViewHolder> 
         public ViewHolder(@NonNull @NotNull View itemView) {
             super(itemView);
 
-            songTitle = itemView.findViewById(R.id.songTitle);
-            songArtist = itemView.findViewById(R.id.songArtist);
-            songCoverImage = itemView.findViewById(R.id.coverImage);
+            songTitle = itemView.findViewById(R.id.song_title_tv);
+            songArtist = itemView.findViewById(R.id.song_artist_tv);
+            songCoverImage = itemView.findViewById(R.id.song_coverImage);
         }
     }
 
