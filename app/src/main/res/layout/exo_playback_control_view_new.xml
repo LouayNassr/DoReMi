@@ -4,26 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white">
+    android:background="@android:color/holo_blue_dark">
 
     <LinearLayout
         android:id="@+id/player_progress_container"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="4dp"
         android:layout_marginTop="4dp"
-        android:background="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.progressindicator.LinearProgressIndicator
             android:id="@id/exo_progress_placeholder"
-            style="@style/ExoStyledControls.TimeBar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="0dp"
-            app:indicatorColor="@android:color/holo_red_dark"
-            app:trackColor="@android:color/holo_red_light" />
+            android:layout_height="wrap_content" />
     </LinearLayout>
 
 
@@ -35,7 +30,7 @@
         android:includeFontPadding="false"
         android:paddingLeft="4dp"
         android:paddingRight="4dp"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@id/player_progress_container"
@@ -50,7 +45,7 @@
         android:includeFontPadding="false"
         android:paddingLeft="4dp"
         android:paddingRight="4dp"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@id/player_progress_container"
@@ -73,6 +68,7 @@
             android:layout_height="32dp"
             android:layout_marginEnd="32dp"
             android:background="@color/white"
+            android:backgroundTint="@android:color/transparent"
             android:scaleType="centerCrop"
             android:src="@drawable/ic_playlist_add" />
 
@@ -83,6 +79,7 @@
             android:layout_height="32dp"
             android:layout_marginEnd="8dp"
             android:background="@color/white"
+            android:backgroundTint="@android:color/transparent"
             android:scaleType="centerCrop"
             android:src="@drawable/ic_skip_previous" />
 
@@ -92,6 +89,7 @@
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:background="@color/white"
+            android:backgroundTint="@android:color/transparent"
             android:scaleType="centerCrop"
             android:src="@drawable/ic_play_circle_outline" />
 
@@ -101,6 +99,7 @@
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:background="@color/white"
+            android:backgroundTint="@android:color/transparent"
             android:scaleType="centerCrop"
             android:src="@drawable/ic_pause_circle_outline" />
 
@@ -111,6 +110,7 @@
             android:layout_height="32dp"
             android:layout_marginStart="8dp"
             android:background="@color/white"
+            android:backgroundTint="@android:color/transparent"
             android:scaleType="centerCrop"
             android:src="@drawable/ic_skip_next" />
 
@@ -120,6 +120,7 @@
             android:layout_height="32dp"
             android:layout_marginStart="32dp"
             android:background="@color/white"
+            android:backgroundTint="@android:color/transparent"
             android:scaleType="centerCrop"
             android:src="@drawable/ic_favorite_border" />
 
