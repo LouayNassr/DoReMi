@@ -1,9 +1,11 @@
 package com.example.doremi.Activities;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 
+import com.example.doremi.Fragments.PlayerFragment;
 import com.example.doremi.R;
 import com.example.doremi.databinding.ActivityDrawerBinding;
 import com.google.android.material.snackbar.Snackbar;
@@ -11,6 +13,7 @@ import com.google.android.material.navigation.NavigationView;
 
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -19,6 +22,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class DrawerActivity extends AppCompatActivity {
 
+    private static final String LOG = DrawerActivity.class.getSimpleName();
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityDrawerBinding binding;
 
@@ -60,7 +64,20 @@ public class DrawerActivity extends AppCompatActivity {
     @Override
     public boolean onSupportNavigateUp() {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_drawer);
+        if(navController.getCurrentDestination().getId() == R.id.playerFragment){
+            Log.d(LOG, "success");
+
+        }
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
+//
+//    @Override
+//    public void onBackPressed() {
+//        super.onBackPressed();
+//        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_drawer);
+//        if(navController.getCurrentDestination().getId() == R.id.playerFragment){
+//            Log.d(LOG, "success");
+//        }
+//    }
 }

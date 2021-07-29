@@ -22,4 +22,10 @@
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/nav_header_drawer"
         app:menu="@menu/activity_main_drawer" />
+
+    <FrameLayout
+        android:id="@+id/miniPlayer_container"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 </androidx.drawerlayout.widget.DrawerLayout>

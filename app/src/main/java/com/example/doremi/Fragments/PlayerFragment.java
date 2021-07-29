@@ -11,6 +11,8 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.ImageButton;
 
+import androidx.activity.OnBackPressedCallback;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -30,6 +32,7 @@ import com.google.android.exoplayer2.trackselection.MappingTrackSelector;
 import com.google.android.exoplayer2.trackselection.TrackSelectionArray;
 import com.google.android.exoplayer2.ui.PlayerNotificationManager;
 import com.google.android.exoplayer2.ui.TrackSelectionDialogBuilder;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,12 +41,27 @@ import static com.google.android.exoplayer2.C.CONTENT_TYPE_MUSIC;
 
 
 public class PlayerFragment extends Fragment {
-    ImageButton btnFullScreen, btnSettings;
+    ImageButton btnFullScreen, btnSettings, btnFavorite;
     boolean flag = false;// for fullscreen
+    boolean isFavorite = false;
     SimpleExoPlayer player;
     private FragmentPlayerBinding binding;
     private SongsPlayerSharedViewModel viewModel;
     private PlayerNotificationManager playerNotificationManager;
+
+    @Override
+    public void onCreate(@Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+
+        OnBackPressedCallback callback = new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+
+            }
+        };
+        requireActivity().getOnBackPressedDispatcher().addCallback(this, callback);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -54,6 +72,7 @@ public class PlayerFragment extends Fragment {
 
         btnFullScreen = binding.audioPlayerView.findViewById(R.id.exo_fullscreen_button);
         btnSettings = binding.audioPlayerView.findViewById(R.id.exo_quality_settings);
+        btnFavorite = binding.audioPlayerView.findViewById(R.id.favorite_btn);
 
         //make activity fullscreen
         View decorView = getActivity().getWindow().getDecorView();
@@ -99,37 +118,48 @@ public class PlayerFragment extends Fragment {
 
                 player.prepare();
                 player.setPlayWhenReady(true);
+//                binding.playerControls.setPlayer(player);
+//                binding.audioPlayerView.findViewById(R.id.exo_fullscreen_button).setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                        if (flag) {
+//                            btnFullScreen.setImageDrawable(getResources().getDrawable(R.drawable.ic_fullscreen));
+//                            getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+//                        } else {
+//                            btnFullScreen.setImageDrawable(getResources().getDrawable(R.drawable.ic_fullscreen_exit));
+//                            getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+//                        }
+//                        flag = !flag;
+//                    }
+//                });
 
-                binding.audioPlayerView.findViewById(R.id.exo_fullscreen_button).setOnClickListener(new View.OnClickListener() {
+//                binding.audioPlayerView.findViewById(R.id.exo_quality_settings).setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                        MappingTrackSelector.MappedTrackInfo mappedTrackInfo = trackSelector.getCurrentMappedTrackInfo();
+//                        if (mappedTrackInfo != null) {
+//                            int rendererIndex = 0;
+//                            int rendererType = mappedTrackInfo.getRendererType(rendererIndex);
+//                            boolean allowAdaptiveSelections =
+//                                    rendererType == C.TRACK_TYPE_VIDEO
+//                                            || (rendererType == C.TRACK_TYPE_AUDIO
+//                                            && mappedTrackInfo.getTypeSupport(C.TRACK_TYPE_VIDEO)
+//                                            == MappingTrackSelector.MappedTrackInfo.RENDERER_SUPPORT_NO_TRACKS);
+//                            TrackSelectionDialogBuilder builder = new TrackSelectionDialogBuilder(getActivity(), "select one", trackSelector, rendererIndex);
+//                            builder.setAllowAdaptiveSelections(allowAdaptiveSelections);
+//                            builder.build().show();
+//                        }
+//                    }
+//                });
+                btnFavorite.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if (flag) {
-                            btnFullScreen.setImageDrawable(getResources().getDrawable(R.drawable.ic_fullscreen));
-                            getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+                        if(isFavorite) {
+                            btnFavorite.setImageResource(R.drawable.ic_favorite_border);
                         } else {
-                            btnFullScreen.setImageDrawable(getResources().getDrawable(R.drawable.ic_fullscreen_exit));
-                            getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+                            btnFavorite.setImageResource(R.drawable.ic_favorite);
                         }
-                        flag = !flag;
-                    }
-                });
-
-                binding.audioPlayerView.findViewById(R.id.exo_quality_settings).setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        MappingTrackSelector.MappedTrackInfo mappedTrackInfo = trackSelector.getCurrentMappedTrackInfo();
-                        if (mappedTrackInfo != null) {
-                            int rendererIndex = 0;
-                            int rendererType = mappedTrackInfo.getRendererType(rendererIndex);
-                            boolean allowAdaptiveSelections =
-                                    rendererType == C.TRACK_TYPE_VIDEO
-                                            || (rendererType == C.TRACK_TYPE_AUDIO
-                                            && mappedTrackInfo.getTypeSupport(C.TRACK_TYPE_VIDEO)
-                                            == MappingTrackSelector.MappedTrackInfo.RENDERER_SUPPORT_NO_TRACKS);
-                            TrackSelectionDialogBuilder builder = new TrackSelectionDialogBuilder(getActivity(), "select one", trackSelector, rendererIndex);
-                            builder.setAllowAdaptiveSelections(allowAdaptiveSelections);
-                            builder.build().show();
-                        }
+                        isFavorite = !isFavorite;
                     }
                 });
                 final int[] currentIndex = {player.getCurrentWindowIndex()};
@@ -141,6 +171,14 @@ public class PlayerFragment extends Fragment {
 
                     @Override
                     public String getCurrentContentTitle(Player player) {
+                        binding.songTitleTv.setText(songs.get(currentIndex[0]).getSong_en_title());
+                        binding.artistNameTv.setText(songs.get(currentIndex[0]).getSong_artist_name());
+                        Picasso.get()
+                                .load(songs.get(currentIndex[0]).getSong_cover_img())
+                                .centerCrop()
+                                .fit()
+                                .into(binding.coverImage);
+
                         return songs.get(currentIndex[0]).getSong_en_title();
                     }
 
