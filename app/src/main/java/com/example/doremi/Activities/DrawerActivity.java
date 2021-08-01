@@ -5,7 +5,6 @@ import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 
-import com.example.doremi.Fragments.PlayerFragment;
 import com.example.doremi.R;
 import com.example.doremi.databinding.ActivityDrawerBinding;
 import com.google.android.material.snackbar.Snackbar;
@@ -13,7 +12,6 @@ import com.google.android.material.navigation.NavigationView;
 
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
-import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -57,7 +55,7 @@ public class DrawerActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.drawer, menu);
+        getMenuInflater().inflate(R.menu.home_activity_toolbar_menu, menu);
         return true;
     }
 
