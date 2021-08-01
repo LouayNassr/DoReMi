@@ -28,10 +28,10 @@
     </fragment>
 
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.example.doremi.Fragments.SlideshowFragment"
+        android:id="@+id/nav_home"
+        android:name="com.example.doremi.Fragments.HomeFragment"
         android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/playerFragment"
         android:name="com.example.doremi.Fragments.PlayerFragment"

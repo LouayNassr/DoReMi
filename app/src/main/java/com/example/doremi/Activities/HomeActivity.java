@@ -24,7 +24,7 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_songs, R.id.nav_playlists, R.id.nav_slideshow)
+                R.id.nav_songs, R.id.nav_playlists, R.id.nav_home)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_home);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);

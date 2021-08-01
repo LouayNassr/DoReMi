@@ -12,24 +12,25 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.doremi.ViewModels.SlideshowViewModel;
-import com.example.doremi.databinding.FragmentSlideshowBinding;
+import com.example.doremi.ViewModels.HomeFragmentViewModel;
+import com.example.doremi.databinding.FragmentHomeBinding;
 
-public class SlideshowFragment extends Fragment {
 
-    private SlideshowViewModel slideshowViewModel;
-    private FragmentSlideshowBinding binding;
+public class HomeFragment extends Fragment {
+
+    private HomeFragmentViewModel homeFragmentViewModel;
+    private FragmentHomeBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        slideshowViewModel =
-                new ViewModelProvider(this).get(SlideshowViewModel.class);
+        homeFragmentViewModel =
+                new ViewModelProvider(this).get(HomeFragmentViewModel.class);
 
-        binding = FragmentSlideshowBinding.inflate(inflater, container, false);
+        binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         final TextView textView = binding.textSlideshow;
-        slideshowViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+        homeFragmentViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);
