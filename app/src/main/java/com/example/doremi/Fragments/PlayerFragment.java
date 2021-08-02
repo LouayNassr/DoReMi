@@ -2,7 +2,6 @@ package com.example.doremi.Fragments;
 
 import android.app.Activity;
 import android.app.PendingIntent;
-import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,7 +10,6 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.ImageButton;
 
-import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
@@ -28,10 +26,8 @@ import com.google.android.exoplayer2.SimpleExoPlayer;
 import com.google.android.exoplayer2.audio.AudioAttributes;
 import com.google.android.exoplayer2.source.TrackGroupArray;
 import com.google.android.exoplayer2.trackselection.DefaultTrackSelector;
-import com.google.android.exoplayer2.trackselection.MappingTrackSelector;
 import com.google.android.exoplayer2.trackselection.TrackSelectionArray;
 import com.google.android.exoplayer2.ui.PlayerNotificationManager;
-import com.google.android.exoplayer2.ui.TrackSelectionDialogBuilder;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -54,13 +50,13 @@ public class PlayerFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
 
-        OnBackPressedCallback callback = new OnBackPressedCallback(true) {
-            @Override
-            public void handleOnBackPressed() {
-
-            }
-        };
-        requireActivity().getOnBackPressedDispatcher().addCallback(this, callback);
+//        OnBackPressedCallback callback = new OnBackPressedCallback(true) {
+//            @Override
+//            public void handleOnBackPressed() {
+//
+//            }
+//        };
+//        requireActivity().getOnBackPressedDispatcher().addCallback(this, callback);
     }
 
     @Override
@@ -154,7 +150,7 @@ public class PlayerFragment extends Fragment {
                 btnFavorite.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if(isFavorite) {
+                        if (isFavorite) {
                             btnFavorite.setImageResource(R.drawable.ic_favorite_border);
                         } else {
                             btnFavorite.setImageResource(R.drawable.ic_favorite);
