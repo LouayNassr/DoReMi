@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_nav_playlists_to_nav_songs"
             app:destination="@id/nav_songs" />
+        <action
+            android:id="@+id/action_nav_playlists_to_nav_search"
+            app:destination="@id/nav_search" />
     </fragment>
 
     <fragment
@@ -25,6 +28,9 @@
             app:destination="@id/playerFragment"
             app:popEnterAnim="@android:anim/slide_in_left"
             app:popExitAnim="@android:anim/slide_out_right" />
+        <action
+            android:id="@+id/action_nav_songs_to_nav_search"
+            app:destination="@id/nav_search" />
     </fragment>
 
     <fragment
@@ -49,6 +55,9 @@
         <action
             android:id="@+id/action_nav_home_to_newsFragment"
             app:destination="@id/newsFragment" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_search"
+            app:destination="@id/nav_search" />
     </fragment>
     <fragment
         android:id="@+id/playerFragment"
@@ -80,4 +89,9 @@
         android:name="com.example.doremi.Fragments.NewsFragment"
         android:label="fragment_news"
         tools:layout="@layout/fragment_news" />
+    <fragment
+        android:id="@+id/nav_search"
+        android:name="com.example.doremi.Fragments.SearchFragment"
+        android:label="fragment_search"
+        tools:layout="@layout/fragment_search" />
 </navigation>
