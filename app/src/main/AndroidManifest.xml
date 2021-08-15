@@ -13,10 +13,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DoReMi">
         <activity android:name=".Activities.HomeActivity"></activity>
-        <activity
-            android:name=".Activities.DrawerActivity"
-            android:label="@string/title_activity_drawer"
-            android:theme="@style/Theme.DoReMi.NoActionBar" />
         <activity android:name=".Activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
